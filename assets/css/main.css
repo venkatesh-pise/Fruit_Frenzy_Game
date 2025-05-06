@@ -1,0 +1,138 @@
+/* Import Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
+/* Reset and Base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Baloo 2', cursive;
+    background-color: #fff8e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+/* Main Container */
+
+.maincontainer {
+    width: 100%;
+    max-width: 700px;
+    min-height: 850px;
+    background-image: url('../images/opening_bg.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 57px;
+}
+
+
+/* Top Section - Logo */
+
+.top-section {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 70%;
+    max-width: 240px;
+    height: auto;
+}
+
+
+/* Main Area */
+
+.mainArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.instructions {
+    width: 100%;
+    background-image: url('../images/instruction_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 400px;
+    padding: 52px 23px 30px 60px;
+    border-radius: 12px;
+    color: #eee8e7;
+    font-size: 19px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.instructions h2 {
+    text-align: center;
+    top: -20px;
+    left: -18px;
+    font-size: 25px;
+    color: #ffffff;
+    text-shadow: 3px 2px black;
+    position: relative;
+}
+
+.instructions ol {
+    padding-left: 20px;
+    padding-bottom: 35px;
+    margin-top: 50px;
+    list-style: decimal;
+    width: 90%;
+}
+
+.instructions li {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+
+/* Play Button */
+
+.play-btn {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+}
+
+.playbtn {
+    width: 140px;
+    height: auto;
+}
+
+
+/* Responsive Typography */
+
+@media (max-width: 480px) {
+    .maincontainer {
+        max-width: 90%;
+        min-height: auto;
+        padding: 20px;
+    }
+    .instructions {
+        font-size: 15px;
+        padding: 20px;
+    }
+    .playbtn {
+        width: 100px;
+    }
+}
