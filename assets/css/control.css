@@ -1,0 +1,100 @@
+/* Import Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
+/* Reset and Base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Baloo 2', cursive;
+    background-color: #fff8e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+
+/* Main Container */
+
+.maincontainer {
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    min-height: 850px;
+    background-image: url('../images/opening_bg.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 57px;
+}
+
+.hidden-container {
+    width: 90%;
+    margin: 0 auto;
+    height: 20vh;
+    border: 2px solid #fcfcfc;
+}
+
+.playArea {
+    margin-top: 10px;
+    padding: 15px;
+    border: 2px solid #ccccff;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: end;
+    position: relative;
+}
+
+.basketArea {
+    position: absolute;
+    bottom: 120px;
+    /* above buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.3s ease-in-out;
+}
+
+.basketArea .basket {
+    max-width: 10vw;
+}
+
+.buttonArea {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.buttonArea .btn {
+    max-width: 6vw;
+    cursor: default;
+}
+
+.buttonArea .btn:hover {
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.falling-item {
+    position: absolute;
+    max-height: 70px;
+    /* max-width: 30px; */
+    transition: transform 0.8s;
+    z-index: 5;
+}
