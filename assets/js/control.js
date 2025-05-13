@@ -238,6 +238,9 @@ function updatePosition(direction) {
 
 window.onload = init;
 
-$(window).unload(function() {
-    window.location.href = "main.html";
-});
+function setVhUnit() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
+setVhUnit();
+window.addEventListener("resize", setVhUnit);
