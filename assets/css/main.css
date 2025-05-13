@@ -26,7 +26,7 @@ body {
 .maincontainer {
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
-    max-width: 7550px;
+    max-width: 550px;
     /* min-height: 850px; */
     background-image: url("../images/opening_bg.png");
     background-size: cover;
@@ -74,27 +74,28 @@ body {
     padding: 50px 23px 30px 70px;
     border-radius: 12px;
     color: #eee8e7;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 600;
+    line-height: 13px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .instructions h2 {
     text-align: center;
-    top: -23px;
+    top: 10px;
     left: -21px;
-    font-size: 25px;
+    font-size: 22px;
     color: #ffffff;
     text-shadow: 3px 2px black;
     position: relative;
 }
 
 .instructions ol {
-    padding-left: 20px;
+    padding-left: 0px;
     padding-bottom: 35px;
-    margin-top: 50px;
+    margin-top: 55px;
     list-style: decimal;
-    width: 90%;
+    width: 94%;
 }
 
 .instructions li {
