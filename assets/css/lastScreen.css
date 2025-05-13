@@ -58,17 +58,18 @@ body {
 #replay {
     margin-top: 30px;
     background-image: url("../images/replay_bg.png");
-    background-size: contain;
+    background-size: 60% 70%;
+    background-position: 50% 0%;
     background-repeat: no-repeat;
-    min-width: 20%;
-    padding: 18px;
-    text-align: center;
+    width: 200px;
+    padding: 40px;
     position: relative;
 }
 
 #replay p {
     position: absolute;
-    top: 10px;
+    top: 5%;
+    left: 32%;
 }
 
 #replay:hover {
