@@ -105,7 +105,7 @@ const basket = document.getElementById("basket");
 
 // redirect to main page on reload action
 if (performance.navigation.type === 1) {
-    window.location.href = "main.html";
+    window.location.href = "index.html";
 }
 
 function init() {
