@@ -5,109 +5,113 @@ let pos = 50;
 
 var score = 0;
 var missedCount = 0;
+let gameOver = false;
 
 var fruitsimage = [{
         name: "fruit1",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit2",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit3",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit4",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit5",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit6",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit7",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit8",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit9",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit10",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit11",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit12",
         path: "assets/images/fruits/fruit2.png",
-        type: "fruit"
+        type: "fruit",
     },
     {
         name: "fruit13",
         path: "assets/images/fruits/fruit1.png",
-        type: "fruit"
-    }
-]
+        type: "fruit",
+    },
+];
 
 var bombs = [{
         name: "bomb1",
         path: "assets/images/bombs/bomb1.png",
-        type: "bomb"
+        type: "bomb",
     },
     {
         name: "bomb2",
         path: "assets/images/bombs/bomb2.png",
-        type: "bomb"
+        type: "bomb",
     },
     {
         name: "bomb3",
         path: "assets/images/bombs/bomb3.png",
-        type: "bomb"
+        type: "bomb",
     },
     {
         name: "bomb4",
         path: "assets/images/bombs/bomb4.png",
-        type: "bomb"
+        type: "bomb",
     },
     {
         name: "bomb",
         path: "assets/images/bombs/bomb5.png",
-        type: "bomb"
-    }
-]
+        type: "bomb",
+    },
+];
 
 const basket = document.getElementById("basket");
 
-function init() {
-    enableButtons()
-    setInterval(dropRandomItem, 1500);
-
+// redirect to main page on reload action
+if (performance.navigation.type === 1) {
+    window.location.href = "main.html";
 }
 
+function init() {
+    enableButtons();
+    setInterval(dropRandomItem, 1500);
+}
 
 // create random element
 function getRandomItem(arr) {
@@ -124,8 +128,8 @@ function dropRandomItem() {
     img.addClass("falling-item");
     img.attr("type", item.type);
 
-    // Random horizontal position between 5% to 95%
-    let leftPercent = Math.random() * 40 + 30;
+    // Random horizontal position between 40% to 60%
+    let leftPercent = Math.round(Math.random() * 20 + 40);
     img.css("left", leftPercent + "%");
 
     $(".hidden-container").append(img);
@@ -136,28 +140,40 @@ function dropRandomItem() {
 function animateFall(element) {
     let start = null;
 
-
     function step(timestamp) {
+        if (gameOver) {
+            element.remove(); // Optional: clear leftover items
+            return;
+        }
+
         if (!start) start = timestamp;
 
         let progress = timestamp - start;
-        let percent = Math.min(progress / 3000, 1); // animate over 3 sec
-        element.css("top", percent * 80 + "%"); // from 0% to 80%
-
-        // Check for collision
+        let percent = Math.min(progress / 3000, 1);
+        element.css("top", percent * 80 + "%");
+        if (score > 30 && score <= 60) {
+            $("#basket").attr("src", "assets/images/basket2.png");
+        } else if (score > 60) {
+            $("#basket").attr("src", "assets/images/basket3.png");
+        }
         if (isColliding(element, basket)) {
             let type = element.attr("type");
             if (type === "fruit") {
                 score += 10;
                 element.remove();
             } else if (type === "bomb") {
+                gameOver = true;
                 endGame(missedCount, score);
                 return;
             }
         } else if (percent >= 1) {
-            // Missed fruit
             if (element.attr("type") === "fruit") {
                 missedCount++;
+                if (missedCount == 5) {
+                    gameOver = true;
+                    endGame(missedCount, score);
+                    return;
+                }
             }
             element.remove();
         } else {
@@ -180,14 +196,21 @@ function isColliding(fallingItem, basket) {
     );
 }
 
-function endGame(miss, score) {
-    console.log("score: " + score, "missed: " + miss)
-    return;
+function endGame(missed, score) {
+    gameOver = true;
+
+    // Optional: remove all items still falling
+    $(".falling-item").remove();
+
+    // Show game over message
+    // cancelAnimationFrame(animationId);
+    window.location.href = `lastpage.html?score=${score}&missed=${missedCount}`;
 }
 
-
 function enableButtons() {
-    $(".left-btn,.right-btn").css("cursor", "pointer").css("pointer-events", "auto");
+    $(".left-btn,.right-btn")
+        .css("cursor", "pointer")
+        .css("pointer-events", "auto");
     $(".basketArea").css("left", pos + "%");
 }
 
@@ -198,7 +221,7 @@ $(".left-btn").click(function() {
 });
 
 $(".right-btn").click(function() {
-    updatePosition("right")
+    updatePosition("right");
 });
 
 // basket movement on button click
@@ -214,3 +237,7 @@ function updatePosition(direction) {
 }
 
 window.onload = init;
+
+$(window).unload(function() {
+    window.location.href = "main.html";
+});

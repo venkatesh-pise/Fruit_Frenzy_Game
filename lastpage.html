@@ -2,13 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fruit Frenzy</title>
+    <link rel="stylesheet" href="assets/css/lastScreen.css" />
 </head>
 
 <body>
-
+    <div class="maincontainer">
+        <div class="result-screen hidden">
+            <h1>Game Over</h1>
+            <p>Your Score: <span id="final-score">0</span></p>
+            <p>Missed Fruits: <span id="missed-count">0</span></p>
+            <div id="replay">
+                <p>Replay</p>
+            </div>
+            <!-- <button id="restart-btn" onclick='location.href="play.html"'>
+          Replay
+        </button> -->
+        </div>
+    </div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/resultscreen.js "></script>
 
 </html>

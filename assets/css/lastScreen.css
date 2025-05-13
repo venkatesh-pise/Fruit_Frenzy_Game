@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Baloo 2", cursive;
+    background-color: #fff8e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.maincontainer {
+    width: 100%;
+    max-width: 700px;
+    min-height: 850px;
+    background-image: url("../images/opening_bg.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 57px;
+}
+
+.result-screen {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.result-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.result-screen p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#replay {
+    margin-top: 20px;
+    background-image: url("../images/replay_bg.png");
+    background-size: cover;
+    min-width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+
+#replay:hover {
+    scale: 1.02;
+    cursor: pointer;
+}
